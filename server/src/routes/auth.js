@@ -20,7 +20,7 @@ const transporter = nodemailer.createTransport({
 router.post("/register", async (req, res) => {
     try {
         const { name, email, password } = req.body;
-
+        console.log(name, email, password);
         const existing = await User.findOne({ email });
         if (existing) return res.status(400).json({ msg: "Email already registered" });
 
