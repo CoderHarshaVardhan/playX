@@ -1,14 +1,14 @@
 import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema({
-  // ===== Basic Auth Fields =====
+
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   isVerified: { type: Boolean, default: false },
 
-  // ===== Profile Fields =====
-  gender: { type: String, enum: ["male", "female", "other"], default: "" },
+  gender: { type: String, enum: ["", "male", "female", "other"], default: "" },
+
   age: { type: Number },
   preferredSports: { type: [String], default: [] },
   skillLevel: {
@@ -23,15 +23,15 @@ const UserSchema = new mongoose.Schema({
       default: "Point",
     },
     coordinates: {
-      type: [Number], // [longitude, latitude]
+      type: [Number],
       default: [0, 0],
     },
-    address: { type: String, default: "" }, // optional human-readable address
+    address: { type: String, default: "" },
   },
   bio: { type: String, default: "" },
   profileCompleted: { type: Boolean, default: false },
 
-  // ===== Meta =====
+
   createdAt: { type: Date, default: Date.now },
 });
 
